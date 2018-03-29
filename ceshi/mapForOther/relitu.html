@@ -60,6 +60,16 @@
     }
 
     function loadData(typ) {
+	    $.ajax({
+            url:'http://116.62.162.134:8090/server/dist/test1.json',
+            datatype:'jsonp',
+            type:'get',
+            success:function(dat){
+                console.log(dat)
+            }
+        })
+
+
         $.ajax({
             url:'http://beidouchaxun.cn/server/getMapList?type='+typ || 'SH',
             type:'get',
