@@ -59,7 +59,7 @@
         geocoder.getLocation(dat.addr, function (status, result) {
             if ((status == 'complete' && result.geocodes.length) || (dat.lng && dat.lat)) {
                // marker.setPosition(result.geocodes[0].location);
-                var ellLocation= (dat.lng && dat.lat) ? [dat.lng,dat.lat] :result.geocodes[0].location
+                var ellLocation= (dat.lng && dat.lat) ? {lng:dat.lng,lat:dat.lat,L:dat.lng,N:dat.lat} :result.geocodes[0].location
                 var ellipse = new AMap.Ellipse({
                     map: map, center: ellLocation, radius: [ 5000, 5000 ],
                     strokeOpacity:0, fillColor:'red', fillOpacity:0.5, zIndex:10,

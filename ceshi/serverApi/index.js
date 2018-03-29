@@ -228,7 +228,6 @@ router.get('/getXlcAddress',(req,res,next)=>{
             connection: connection,
             sql: sqlARR[types],
             success: (dats) => {
-                console.log(dats);
                 res.jsonp({data:dats})
             }
         })
