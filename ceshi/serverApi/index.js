@@ -218,7 +218,7 @@ router.get('/getQmap',(req,res,next)=>{
 })
 router.get('/getXlcAddress',(req,res,next)=>{
     var types=req.body.type || 'SH';
-    console.log(types)
+    console.log(req.body)
     var sqlARR={
         SH:"SELECT * from ceshi_xlc_hotpoint",
         HB:"select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'"
