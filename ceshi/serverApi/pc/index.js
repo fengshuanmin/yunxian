@@ -12,6 +12,9 @@ router.use('/peijianDS',(req,res,next)=>{
 router.get('/mapMak',(req,res,next)=>{
     res.render('./mapForOther/mapMak',{dataList:req.body});
 })
+router.get('/relitu',(req,res,next)=>{
+    res.render('./mapForOther/relitu',{dataList:req.body});
+})
 router.get('/getQmap',(req,res,next)=>{
     res.render('./mapForOther/mapQ.html',{dataList:req.body});
 
