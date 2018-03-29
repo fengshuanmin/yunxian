@@ -200,7 +200,7 @@ router.post('/BQXX',(req,res,next)=>{
 })
 
 router.get('/getMapList',(req,res,next)=>{
-    var types=req.query.type || 'SH';
+    var types=req.query.type || 'HB';
     console.log(req.query.type)
     var sqlARR={
         SH:'310000',
@@ -210,7 +210,7 @@ router.get('/getMapList',(req,res,next)=>{
     var query = (connection)=> {
         sql.query({
             connection: connection,
-            sql: sqlText,
+            sql: "select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'",
             success: (dats) => {
                 console.log(dats);
                 res.jsonp({data:dats})
