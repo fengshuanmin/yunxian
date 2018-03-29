@@ -39,9 +39,8 @@
     });
     function getAddress(geocoder,data) {
         $.ajax({
-            url: 'http://beidouchaxun.cn/server/getXlcAddress',
+            url: 'http://beidouchaxun.cn/server/getXlcAddress?type='+data,
             type: 'get',
-            data:{type:data||"SH"},
             dataType: "jsonp",
             success: function (dat) {
                 console.log(dat)
