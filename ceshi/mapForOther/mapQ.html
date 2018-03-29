@@ -13,8 +13,8 @@
 <body>
 <div id="container"></div>
 <div class="button-group">
-    <button onclick="change(121.3301,31.0376)">河北</button>
-    <button>上海</button>
+    <button onclick="change(114.514793,38.042225)">河北</button>
+    <button onclick="change(121.464404,31.229357)">上海</button>
 </div>
 <script>
     var map = new AMap.Map("container", {
@@ -23,14 +23,14 @@
         zoom: 11
     });
     function change(a,b){
-        map.setZoomAndCenter(18, [a*1,b*1]);
+        map.setZoomAndCenter(11, [a*1,b*1]);
     }
     if (!isSupportCanvas()) {
         alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
     }
     AMap.plugin('AMap.Geocoder',function(){
         var geocoder = new AMap.Geocoder({
-            city: "021"//城市，默认：“全国”
+            city: ""//城市，默认：“全国”
         });
 
         getAddress(geocoder)
