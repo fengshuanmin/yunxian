@@ -13,8 +13,8 @@
 <body>
 <div id="container"></div>
 <div class="button-group">
-    <input type="button" class="button" value="显示热力图" onclick="heatmap.show()"/>
-    <input type="button" class="button" value="关闭热力图" onclick="heatmap.hide()"/>
+    <button onclick="change(114.514793,38.042225,'HB')">河北</button>
+    <button onclick="change(121.464404,31.229357,'SH')">上海</button>
 </div>
 <script>
     var map = new AMap.Map("container", {
@@ -22,6 +22,10 @@
         center: [121.464404,31.229357],
         zoom: 14
     });
+    function change(a,b,d){
+        map.setZoomAndCenter(11, [a*1,b*1]);
+        loadData(d)
+    }
     if (!isSupportCanvas()) {
         alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
     }
@@ -54,21 +58,24 @@
 			});
 		});
     }
-    $.ajax({
-        url:'http://beidouchaxun.cn/server/getMapList',
-        type:'get',
-        dataType: "jsonp",
-        success: function (dat) {
-            for(var i in dat.data){
-                dat.data[i].count=(dat.data[i].count || 5)
-                dat.data[i].lng=dat.data[i].lng*1
-                dat.data[i].lat=dat.data[i].lat*1
-            }
-            mapList(dat.data);
-            heatmap.show()
-        }
-    })
 
+    function loadData(typ) {
+        $.ajax({
+            url:'http://beidouchaxun.cn/server/getMapList?type='+typ || 'SH',
+            type:'get',
+            dataType: "jsonp",
+            success: function (dat) {
+                for(var i in dat.data){
+                    dat.data[i].count=(dat.data[i].count || 5)
+                    dat.data[i].lng=dat.data[i].lng*1
+                    dat.data[i].lat=dat.data[i].lat*1
+                }
+                mapList(dat.data);
+                heatmap.show()
+            }
+        })
+    }
+    loadData()
 	//判断浏览区是否支持canvas
     function isSupportCanvas() {
         var elem = document.createElement('canvas');
