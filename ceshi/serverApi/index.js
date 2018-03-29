@@ -220,7 +220,7 @@ router.get('/getXlcAddress',(req,res,next)=>{
     var query = (connection)=> {
         sql.query({
             connection: connection,
-            sql: "SELECT * from ceshi_xlc_hotpoint",
+            sql: "select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'",
             success: (dats) => {
                 console.log(dats);
                 res.jsonp({data:dats})

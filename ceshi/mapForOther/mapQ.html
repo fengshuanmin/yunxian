@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>地图圆点</title>
+    <title>热力图</title>
     <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
     <script src="http://webapi.amap.com/maps?v=1.4.2&key=bbbde4f59c905d99f53ba3126eb6cbab&plugin=AMap.EllipseEditor"></script>
     <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
@@ -13,7 +13,8 @@
 <body>
 <div id="container"></div>
 <div class="button-group">
-    <input style="position:absolute;top:50px;right:30px;border:1px solid #ccc;height:40px;width:200px;z-index:199;" type="text" placeholder="请输入返回值按return/Enter 确认">
+    <button>河北</button>
+    <button>上海</button>
 </div>
 <script>
     var map = new AMap.Map("container", {
@@ -31,7 +32,8 @@
 
         getAddress(geocoder)
     });
-    function getAddress(geocoder) {
+    function getAddress(geocoder,location) {
+        map.setZoomAndCenter(18, location);
         $.ajax({
             url: 'http://beidouchaxun.cn/server/getXlcAddress',
             type: 'get',
@@ -79,6 +81,7 @@
             }
         })
     }
+
     //判断浏览区是否支持canvas
     function isSupportCanvas() {
         var elem = document.createElement('canvas');

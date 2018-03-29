@@ -9,7 +9,11 @@ router.use('/peijianDS',(req,res,next)=>{
     res.render('./pc/peijianDS',{dataList:req.body});
 });
 
-router.use('/mapMak',(req,res,next)=>{
+router.get('/mapMak',(req,res,next)=>{
     res.render('./mapForOther/mapMak',{dataList:req.body});
+})
+router.get('/getQmap',(req,res,next)=>{
+    res.render('./mapForOther/mapQ.html',{dataList:req.body});
+
 })
 module.exports = router;
