@@ -413,36 +413,12 @@ router.post('/pcMapXlc',(req,res,next)=>{
     })
 })
 router.use('/U/:id',(req,res,next)=>{
-    var nowTime=Date.parse( new Date());
-    if(!tokenData.time || (nowTime-tokenData.time)>=7000000){
-        wxApi.getToken((rest)=>{
-            if(rest.access_token){
-                tokenData.token=rest.access_token;
-                tokenData.time=nowTime;
-                wxApi.getTicket((resg)=>{
-                    tokenData.ticket=resg.ticket;
-                    var dataList={
-                        path:ripath+('repairPlant'),
-                        title:'修理厂信息',
-                        tickets:tokenData.ticket
-                    }
-                    res.render('index',{dataList:dataList});
-                })
-            }
-        })
-    }else{
-        var dataList={
-            path:ripath+('repairPlant'),
-            title:'修理厂信息',
-            tickets:tokenData.ticket
-        }
-        res.render('index',{dataList:dataList});
+    var dataList={
+        path:ripath+('repairPlant'),
+        title:'修理厂信息',
+        tickets:tokenData.ticket
     }
-
-
-
-
-
+    res.render('index',{dataList:dataList});
 })
 
 router.get('/goWhere/*',(req,res,next)=>{
