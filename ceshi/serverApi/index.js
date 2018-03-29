@@ -217,7 +217,7 @@ router.get('/getQmap',(req,res,next)=>{
 
 })
 router.get('/getXlcAddress',(req,res,next)=>{
-    var types=res.body.type || 'SH';
+    var types=req.body.type || 'SH';
     console.log(types)
     var sqlARR={
         SH:"SELECT * from ceshi_xlc_hotpoint",
