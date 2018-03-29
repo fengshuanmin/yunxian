@@ -16,6 +16,7 @@
     <button onclick="change(114.514793,38.042225,'HB')">河北</button>
     <button onclick="change(121.464404,31.229357,'SH')">上海</button>
 </div>
+<script src="http://116.62.162.134:8090/server/dist/test1.js"></script>
 <script>
     var map = new AMap.Map("container", {
         resizeEnable: true,
@@ -60,16 +61,20 @@
     }
 
     function loadData(typ) {
-	    $.ajax({
-            url:'http://116.62.162.134:8090/server/dist/test1.json',
-            datatype:'jsonp',
-            type:'get',
-            success:function(dat){
-                console.log(dat)
+	    dat={data:datms}
+        for(var j in datms){
+            dat={data:datms[j]}
+            for(var i in dat.data){
+                dat.data[i].count=(dat.data[i].count || 5)
+                dat.data[i].lng=dat.data[i].lng*1
+                dat.data[i].lat=dat.data[i].lat*1
             }
-        })
+        }
 
+        mapList(dat.data);
+        heatmap.show()
 
+return;
         $.ajax({
             url:'http://beidouchaxun.cn/server/getMapList?type='+typ || 'SH',
             type:'get',
