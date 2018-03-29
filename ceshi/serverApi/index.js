@@ -217,10 +217,15 @@ router.get('/getQmap',(req,res,next)=>{
 
 })
 router.get('/getXlcAddress',(req,res,next)=>{
+    var type=res.body.type || 'SH';
+    var sqlARR={
+        SH:"SELECT * from ceshi_xlc_hotpoint",
+        HB:"select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'"
+    }
     var query = (connection)=> {
         sql.query({
             connection: connection,
-            sql: "SELECT * from ceshi_xlc_hotpoint",
+            sql: sqlARR[type],
             success: (dats) => {
                 console.log(dats);
                 res.jsonp({data:dats})

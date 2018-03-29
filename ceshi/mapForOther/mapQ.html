@@ -13,8 +13,8 @@
 <body>
 <div id="container"></div>
 <div class="button-group">
-    <button onclick="change(114.514793,38.042225)">河北</button>
-    <button onclick="change(121.464404,31.229357)">上海</button>
+    <button onclick="change(114.514793,38.042225,'HB')">河北</button>
+    <button onclick="change(121.464404,31.229357,'SH')">上海</button>
 </div>
 <script>
     var map = new AMap.Map("container", {
@@ -22,23 +22,26 @@
         center: [121.464404,31.229357],
         zoom: 11
     });
-    function change(a,b){
+    function change(a,b,d){
         map.setZoomAndCenter(11, [a*1,b*1]);
+        getAddress(geocoder,d);
     }
     if (!isSupportCanvas()) {
         alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
     }
+    var geocoder
     AMap.plugin('AMap.Geocoder',function(){
-        var geocoder = new AMap.Geocoder({
+        geocoder = new AMap.Geocoder({
             city: ""//城市，默认：“全国”
         });
 
         getAddress(geocoder)
     });
-    function getAddress(geocoder,location) {
+    function getAddress(geocoder,data) {
         $.ajax({
             url: 'http://beidouchaxun.cn/server/getXlcAddress',
             type: 'get',
+            data:{type:data||"SH"},
             dataType: "jsonp",
             success: function (dat) {
                 console.log(dat)
@@ -54,11 +57,11 @@
             bubble:true
         })*/
         geocoder.getLocation(dat.addr, function (status, result) {
-            if (status == 'complete' && result.geocodes.length) {
+            if ((status == 'complete' && result.geocodes.length) || (dat.lng && dat.lat)) {
                // marker.setPosition(result.geocodes[0].location);
-
+                var ellLocation= (dat.lng && dat.lat) ? [dat.lng,dat.lat] :result.geocodes[0].location
                 var ellipse = new AMap.Ellipse({
-                    map: map, center: result.geocodes[0].location, radius: [ 5000, 5000 ],
+                    map: map, center: ellLocation, radius: [ 5000, 5000 ],
                     strokeOpacity:0, fillColor:'red', fillOpacity:0.5, zIndex:10,
                     bubble:true, cursor:'pointer', bubble: false
                 })
@@ -71,7 +74,7 @@
                         zIndex:999
                     });
                     InfoWindow.open(
-                        map,result.geocodes[0].location
+                        map,ellLocation
                     )
                 });
 
@@ -79,7 +82,8 @@
                 /*map.setCenter(marker.getPosition())*/
                 console.log('成功')
             } else {
-                console.log('失败',dat.addr)
+                console.log('失败',dat.addr);
+
             }
         })
     }
