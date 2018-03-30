@@ -303,7 +303,7 @@ router.get('/down',(req,res,next)=>{
 
 
 
-//**字体**//
+/*//!**字体**!//
 var Fontmin = require('fontmin');
 router.post('/fonts',(req,res,next)=>{
     var textData=req.query.data || req.body.data;
@@ -335,7 +335,7 @@ router.post('/fonts',(req,res,next)=>{
         console.log('done');        // 成功
     });
 })
-/**定时任务 4小时**/
+/!**定时任务 4小时**!/
 var schedule = require("node-schedule");
 var rule3     = new schedule.RecurrenceRule();
 var times3    = [1,5,9,13,17,21];
@@ -363,7 +363,7 @@ var j = schedule.scheduleJob(rule3, ()=>{
 
         }
     })
-});
+});*/
 
 //2018/1/16
 router.post('/pcMapXlc',(req,res,next)=>{
