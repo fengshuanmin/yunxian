@@ -1,3 +1,4 @@
+var fs=require('fs')
 var express= require('express');
 var superagent = require('superagent');
 var jsonp = require('superagent-jsonp')
