@@ -29,6 +29,6 @@ app.use('/server', require('./serverApi'));
 
 
 
-app.listen(8055,()=>{
+app.listen(8099,()=>{
     console.log('local:localhost:8055 上线的时候记得把端口改成8099， ws 改成8181');
 });
