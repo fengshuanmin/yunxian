@@ -11,7 +11,7 @@ var projjj=true;
 
 //pc端访问
 router.use('/pc',require('./pc'));
-
+router.use('/lexiu-app',require('../api/8280'))
 
 /*ws*/
 var WebSocketServer = require('ws').Server,
