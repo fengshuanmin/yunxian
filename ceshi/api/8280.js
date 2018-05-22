@@ -12,7 +12,7 @@ router.post('/*',(req,res,next)=>{
         var apiURL='http://www.beidouchaxun.cn:8280'+req.url
 
         // var apiURL = 'http://121.43.165.81:8888'+req.originalUrl;
-console.log(apiURL)
+   console.log(apiURL)
     if(req.headers.cookie){
         var ServerCookie = req.headers.cookie;
     }
@@ -20,7 +20,7 @@ console.log(apiURL)
     console.log(apiURL,data)
     console.log(req.url)
     superagent
-        .get(apiURL)
+        .post(apiURL)
         .type('form')
         .accept('json')
         .send(data)
@@ -53,13 +53,13 @@ console.log(apiURL)
 
         });
 });
-router.get('/',(req,res,next)=>{
+router.get('/*',(req,res,next)=>{
 
         // var apiURL = 'http://www.beidouchaxun.cn:8280/api/librarywallet/info?token=c7a1577248b36eff1bbf774faacf3aa9';
     // var apiURL = 'http://www.beidouchaxun.cn:8280/api/librarywallet/info?token='+req.originalUrl;
     // var apiURL = 'http://www.beidouchaxun.cn:8280'+req.originalUrl;
     var apiURL='http://www.beidouchaxun.cn:8280'+req.url
-
+    console.log(apiURL)
     if(req.headers.cookie){
         var ServerCookie = req.headers.cookie;
     }
