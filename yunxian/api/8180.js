@@ -17,6 +17,7 @@ console.log( req.headers.cookie)
         var ServerCookie = req.headers.cookie;
     }
     const data=req.body;
+
     // console.log(apiURL,data)
     // console.log(req.url)
     superagent
@@ -53,7 +54,7 @@ console.log( req.headers.cookie)
 
         });
 });
-router.get('/',(req,res,next)=>{
+router.get('/*',(req,res,next)=>{
 
         // var apiURL = 'http://www.beidouchaxun.cn:8280/api/librarywallet/info?token=c7a1577248b36eff1bbf774faacf3aa9';
     // var apiURL = 'http://www.beidouchaxun.cn:8280/api/librarywallet/info?token='+req.originalUrl;
