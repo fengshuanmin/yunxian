@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a5f7704-c9e4-4699-b82d-5c6361106c45" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ceshi/api/8180.js" afterPath="$PROJECT_DIR$/ceshi/api/8180.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ceshi/serverApi/index.js" afterPath="$PROJECT_DIR$/ceshi/serverApi/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yunxian/api/8180.js" afterPath="$PROJECT_DIR$/yunxian/api/8180.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yunxian/serverApi/index.js" afterPath="$PROJECT_DIR$/yunxian/serverApi/index.js" />
-    </list>
+    <list default="true" id="2a5f7704-c9e4-4699-b82d-5c6361106c45" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -210,12 +204,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526980665080</updated>
       <workItem from="1526980667052" duration="1186000" />
-      <workItem from="1527576831019" duration="394000" />
+      <workItem from="1527576831019" duration="794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1580000" />
+    <option name="totallyTimeSpent" value="1980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
