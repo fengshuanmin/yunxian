@@ -7,7 +7,7 @@ var projjj=true;
 
 router.post('/*',(req,res,next)=>{
     if(projjj){
-        var apiURL='http://www.beidouchaxun.cn:8180'+req.url
+        var apiURL='http://www.toumingxiuche.cn:8180'+req.url
     }else{
         var apiURL = '192.168.0.113:8080'+req.originalUrl;
     }
@@ -61,7 +61,7 @@ router.get('/*',(req,res,next)=>{
     // var apiURL = 'http://www.beidouchaxun.cn:8280'+req.originalUrl;
     /*var apiURL='http://www.beidouchaxun.cn:8180'+req.url*/
     if(projjj){
-        var apiURL='http://www.beidouchaxun.cn:8180'+req.url
+        var apiURL='http://www.toumingxiuche.cn:8180'+req.url
     }else{
         var apiURL = '192.168.0.113:8080'+req.originalUrl;
     }
