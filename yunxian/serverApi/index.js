@@ -301,7 +301,21 @@ router.get('/down',(req,res,next)=>{
     console.log(vUrl);
     res.end();
 })
-
+router.get('/downperson',(req,res,next)=>{
+    var uab = req.headers['user-agent'],vUrl1
+    if (/Android/.test(uab)){
+        vUrl1='https://www.pgyer.com/1yCE'
+    }else{
+        vUrl1='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6-%E4%B8%AA%E4%BA%BA%E8%AF%A2%E4%BB%B7/id1435034638?l=zh&ls=1&mt=8'
+    }
+    res.write(
+        '<script>' +
+        'window.location.href="'+vUrl1+'"'+
+        '</script>'
+    );
+    console.log(vUrl1);
+    res.end();
+})
 
 
 /*//!**字体**!//
