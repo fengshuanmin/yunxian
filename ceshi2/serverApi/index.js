@@ -1,5 +1,4 @@
-var fs = require("fs");
-var path = require("path");
+var fs=require('fs')
 var express= require('express');
 var superagent = require('superagent');
 var jsonp = require('superagent-jsonp')
@@ -12,12 +11,12 @@ var projjj=true;
 
 //pc端访问
 router.use('/pc',require('./pc'));
+router.use('/lexiu-app',require('../api/8280'))
+router.use('/lexiu1-app',require('../api/8180'))
 
-router.use('/lexiu-app',require('../api/8280'));
-router.use('/lexiu1-app', require('../api/8180'));
 /*ws*/
 var WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({ port: 8185 });
+    wss = new WebSocketServer({ port: 8122 });
 var sockets = {};
 global.APPID='wx4b3cc819d682ce0e';
 global.APPSECRET='07826b26a4f149ccfacba09426fa980c'
@@ -38,6 +37,7 @@ wss.on('connection', function (ws) {
         }
     });
     ws.on('close',function(e){
+
         console.log('关闭了'+e);
     })
 });
@@ -127,22 +127,6 @@ router.get('/showEWM/:id',(req,res,next)=>{
         res.render('index',{dataList:dataList});
     }
 });
-
-router.get('/goWhere/*',(req,res,next)=>{
-    res.cookie('jb','ii')
-    var newArr={fomeXLC:{type:'lexiuApp'}};
-    for(var i in newArr){
-        if(i==req.query.action){
-            req.query.action=newArr[i].type
-        }
-    }
-    var arr={loveCarRepair:'维修记录',lexiuApp:'修理厂',reportStatistics:'透明修车',newBuild:'案件维修',integral:'积分榜'}
-    var dataList={
-        path:ripath+(req.query.action || 'lexiuApp'),
-        title:arr[req.query.action]
-    }
-    res.render('index',{dataList:dataList});
-})
 router.get('/',(req,res,next)=>{
     res.cookie('jb','ii')
     var newArr={fomeXLC:{type:'lexiuApp'}};
@@ -158,8 +142,6 @@ router.get('/',(req,res,next)=>{
     }
     res.render('index',{dataList:dataList});
 });
-
-
 router.post('/BQXX',(req,res,next)=>{
     var keys=req.body.data.split("/")[1];
     var dats=req.body.data.split("/").pop();
@@ -179,63 +161,17 @@ router.post('/BQXX',(req,res,next)=>{
         .accept('json')
         .send(data)
         .end((reqe,rese)=>{
-            rese ? res.json(rese.body) : res.json({code:'911',massage:'请求异常'})
+            res.json(rese.body)
         });
-
-
-    /*console.log(req.body.data);
-    var url="http://assess-api.lexiugo.com/assess-api/assess-api"+encodeURIComponent(req.body.data)+"?callback=__callback&userName=lexiugo&passwd=n27H3lNGL7wJSePFsrr0g16UTU0%2BtDfsGHMVZ2pmxsDaFV4cVSzVwQ%3D%3D&_=1510119995854"
-    http.get(url,(r)=>{
-        var html = '';
-        // 绑定data事件 回调函数 累加html片段
-        r.on('data',(data)=>{
-            html += data;
-        });
-        r.on('end',()=>{
-            console.log(eval(''+html.split('__callback')[1]+''))
-            res.json(eval(''+html.split('__callback')[1]+''))
-        });
-    }).on('error',()=>{
-        console.log('获取数据错误');
-    });*/
 })
 
 router.get('/getMapList',(req,res,next)=>{
-    var types=req.query.type || 'HB';
-    console.log(req.query.type)
-    var sqlARR={
-        SH:'310000',
-        HB:'130000'
-    },
-    sqlText="select * from 20180329_tmxc_accident_hotpoint where province_code = "+sqlARR[types]+""
     var query = (connection)=> {
         sql.query({
             connection: connection,
-            sql: "select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'",
+            sql: "SELECT * from ceshi_hotpoint",
             success: (dats) => {
                 console.log(dats);
-                res.jsonp({data:dats})
-            }
-        })
-    }
-    sql.Connect(query)
-})
-router.get('/getQmap',(req,res,next)=>{
-    res.render('./mapForOther/mapQ.html',{dataList:req.body});
-
-})
-router.get('/getXlcAddress',(req,res,next)=>{
-    var types=req.query.type || 'SH';
-    console.log(req.query.type)
-    var sqlARR={
-        SH:"SELECT * from ceshi_xlc_hotpoint",
-        HB:"select * from 20180329_tmxc_accident_hotpoint where province_code = '130000'"
-    }
-    var query = (connection)=> {
-        sql.query({
-            connection: connection,
-            sql: sqlARR[types],
-            success: (dats) => {
                 res.jsonp({data:dats})
             }
         })
@@ -365,7 +301,6 @@ router.get('/down',(req,res,next)=>{
     console.log(vUrl);
     res.end();
 })
-//个人下载
 router.get('/downperson',(req,res,next)=>{
     var uab = req.headers['user-agent'],vUrl1
     if (/Android/.test(uab)){
@@ -382,68 +317,15 @@ router.get('/downperson',(req,res,next)=>{
     res.end();
 })
 
-/**聊天喽**/
 
-var wsse = new WebSocketServer({ port: 8182 }),pList={};
-wsse.on('connection',(ws)=>{
-    console.log('client connected');
-    ws.on('message',(message)=>{
-        var newMes=JSON.parse(message);
-        pList[ws._ultron.id]={wsObj:ws,name:newMes.name,id:ws._ultron.id};
-        var newSend={id:ws._ultron.id,type:'jd'}
-        console.log(newSend)
-        var sendData=JSON.stringify(newSend);
-        ws.send(sendData)
-    });
-    ws.on('close',(e)=>{
-        delete pList[ws._ultron.id]
-        console.log('关闭了'+e);
-    })
-});
-router.post('/callMe',(req,res,next)=>{
-    if(req.body.name){
-        pList[req.body.id].name=req.body.name+req.body.id
-    }
-    var data={id:req.body.id,massage:req.body.massage,name:pList[req.body.id].name};
-    if(!req.body.sendId){
-        for(var i in pList){
-            if(i==req.body.id){
-                data.isMe=true;
-            }else{
-                data.isMe='';
-            }
-            var newJson=JSON.stringify(data);
-            try{
-                pList[i].wsObj.send(newJson)
-            }catch (e){
-                delete pList[i];
-            }
-        }
-        res.end()
-    }else{
-        console.log(pList[req.body.sendId])
-        if(pList[req.body.sendId]){
-            var newJson=JSON.stringify(data);
-            pList[req.body.sendId].wsObj.send(newJson);
-            data.isMe=true;
-            var newJson=JSON.stringify(data);
-            pList[req.body.id].wsObj.send(newJson);
-            res.json({msg:'发送成功'})
-        }else{
-            res.json({msg:'对方已下线'})
-        }
-    }
-})
-
-//**字体**//
+/*//!**字体**!//
 var Fontmin = require('fontmin');
 router.post('/fonts',(req,res,next)=>{
-    return;
     var textData=req.query.data || req.body.data;
     var fontStyle=req.query.fontStyle || req.body.fontStyle
     var nowTime=Date.now();
-    var srcPath = '/usr/webServer/ceshi/common/fonts/'+fontStyle+'.ttf'; // 字体源文件
-    var destPath = '/usr/webServer/ceshi/common/fonts/'+nowTime;    // 输出路径
+    var srcPath = '/usr/local/server/yunxian/common/fonts/'+fontStyle+'.ttf'; // 字体源文件
+    var destPath = '/usr/local/server/yunxian/common/fonts/'+nowTime;    // 输出路径
     var fontmin=new Fontmin()
         .src(srcPath)               // 输入配置
         .use(Fontmin.glyph({        // 字型提取插件
@@ -468,15 +350,14 @@ router.post('/fonts',(req,res,next)=>{
         console.log('done');        // 成功
     });
 })
-/**定时任务 4小时**/
+/!**定时任务 4小时**!/
 var schedule = require("node-schedule");
 var rule3     = new schedule.RecurrenceRule();
 var times3    = [1,5,9,13,17,21];
 rule3.hour  = times3;
 var j = schedule.scheduleJob(rule3, ()=>{
-    return;
     var nowTime=Date.now();
-    var newpath='/usr/webServer/ceshi/common/fonts'
+    var newpath='/usr/local/server/yunxian/common/fonts'
     var files = fs.readdirSync(newpath);
     files.forEach((file,index)=>{
         console.log(nowTime-file)
@@ -497,65 +378,78 @@ var j = schedule.scheduleJob(rule3, ()=>{
 
         }
     })
-});
+});*/
 
-
-
-/***/
-router.get('/toweixin',(req,res,next)=>{
-    res.write('<body>你好你好</body>' +
-        '' +
-        '<script>window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4b3cc819d682ce0e&redirect_uri=http://www.beidouchaxun.cn/server?action=newBuild&response_type=code&scope=snsapi_base&state=1&connect_redirect=1"</script>' +
-        '' +
-        '')
-    res.end();
-})
+//2018/1/16
 router.post('/pcMapXlc',(req,res,next)=>{
-    console.log(req.body)
-    res.json({htmls:"" +
-        "<div id='mapSelectBox' style='position:fixed;top:0px;left:0px;z-index:9999;width:100%;height:100vh;'>" +
-        "<section id='appWrappers'></section>" +
-        "<input type='hidden' id='xlcRepairLevelNode' value='"+req.body.xlcRepairLevel+"'>" +
-        "<input type='hidden' id='brandCodeNode' value='"+req.body.brandCode+"'>" +
-        "<input type='hidden' id='MapUseUserId' value='"+req.body.userId+"'>" +
-        "<input type='hidden' id='cityName' value='"+req.body.cityName+"'>" +
-        "<input type='hidden' id='brandName' value='"+req.body.brandName+"'>" +
-        "<script src='http://116.62.162.134:8090/server/dist/pcSelectMap.js'></script>" +
-        "</div>"
-        })
-    })
-router.use('/U/:id',(req,res,next)=>{
-    var nowTime=Date.parse( new Date());
-    if(!tokenData.time || (nowTime-tokenData.time)>=7000000){
-        wxApi.getToken((rest)=>{
-            if(rest.access_token){
-                tokenData.token=rest.access_token;
-                tokenData.time=nowTime;
-                wxApi.getTicket((resg)=>{
-                    tokenData.ticket=resg.ticket;
-                    var dataList={
-                        path:ripath+('repairPlant'),
-                        title:'修理厂信息',
-                        tickets:tokenData.ticket
-                    }
-                    res.render('index',{dataList:dataList});
-                })
-            }
-        })
-    }else{
-        var dataList={
-            path:ripath+('repairPlant'),
-            title:'修理厂信息',
-            tickets:tokenData.ticket
-        }
-        res.render('index',{dataList:dataList});
+    var jsons={htmls:
+    'console.log(document.getElementById("appWrappers"));' +
+    'var newReactDivDom=window.parent.document.createElement("div");' +
+    'newReactDivDom.id="mapSelectBox";' +
+    'newReactDivDom.style="position:fixed;top:0px;left:0px;z-index:9999;width:100%;height:100vh;";' +
+
+    'var appWrappersNOdeDom=window.parent.document.createElement("section");' +
+    'appWrappersNOdeDom.id="appWrappers";' +
+
+    'var xlcRepairLevelNode =window.parent.document.createElement("input");' +
+    'xlcRepairLevelNode.id="xlcRepairLevelNode";' +
+    'xlcRepairLevelNode.value="'+req.body.xlcRepairLevel+'";' +
+    'xlcRepairLevelNode.type="hidden";' +
+
+    'var brandCodeNode =window.parent.document.createElement("input");' +
+    'brandCodeNode.id="brandCodeNode";' +
+    'brandCodeNode.value="'+req.body.brandCode+'";' +
+    'brandCodeNode.type="hidden";' +
+
+    'var scripts =window.parent.document.createElement("script");' +
+    'scripts.src="http://116.62.162.134:8090/server/dist/pcSelectMap.js";' +
+
+    'console.log(appWrappersNOdeDom,xlcRepairLevelNode,brandCodeNode);' +
+    ' newReactDivDom.appendChild(appWrappersNOdeDom);' +
+    ' newReactDivDom.appendChild(xlcRepairLevelNode);' +
+    ' newReactDivDom.appendChild(brandCodeNode);' +
+    ' window.parent.document.body.appendChild(newReactDivDom);' +
+
+    'var scriptBox =window.parent.document.createElement("script");'+
+
+
+    ' window.parent.document.body.appendChild(scripts);'
+        //'$.getScript("http://116.62.162.134:8090/server/dist/pcSelectMap.js")' +
     }
-
-
-
-
-
+    res.json({htmls:"" +
+    "<div id='mapSelectBox' style='position:fixed;top:0px;left:0px;z-index:9999;width:100%;height:100vh;'>" +
+    "<section id='appWrappers'></section>" +
+    "<input type='hidden' id='xlcRepairLevelNode' value='"+req.body.xlcRepairLevel+"'>" +
+    "<input type='hidden' id='brandCodeNode' value='"+req.body.brandCode+"'>" +
+    "<input type='hidden' id='MapUseUserId' value='"+req.body.userId+"'>" +
+    "<input type='hidden' id='cityName' value='"+req.body.cityName+"'>" +
+    "<input type='hidden' id='brandName' value='"+req.body.brandName+"'>" +
+    "<script src='/server/dist/pcSelectMap.js'></script>" +
+    "</div>"
+    })
+})
+router.use('/U/:id',(req,res,next)=>{
+    var dataList={
+        path:ripath+('repairPlant'),
+        title:'修理厂信息',
+        tickets:tokenData.ticket
+    }
+    res.render('index',{dataList:dataList});
 })
 
-router.use('/forward',require('./forward'));
+router.get('/goWhere/*',(req,res,next)=>{
+    res.cookie('jb','ii')
+    var newArr={fomeXLC:{type:'lexiuApp'}};
+    for(var i in newArr){
+        if(i==req.query.action){
+            req.query.action=newArr[i].type
+        }
+    }
+    var arr={loveCarRepair:'维修记录',lexiuApp:'修理厂',reportStatistics:'透明修车',newBuild:'案件维修',integral:'积分榜'}
+    var dataList={
+        path:ripath+(req.query.action || 'lexiuApp'),
+        title:arr[req.query.action]
+    }
+    res.render('index',{dataList:dataList});
+})
 module.exports = router;

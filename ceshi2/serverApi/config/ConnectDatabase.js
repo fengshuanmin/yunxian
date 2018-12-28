@@ -17,6 +17,7 @@ var SQL={
     query:(dat)=>{//查询
         dat.connection.query(dat.sql, (err, rows, fields)=> {
             if (err) throw err;
+            console.log(rows);
             if(dat.fun){
                 dat.fun(rows[0] ? rows[0].ID : rows)
             }else if(dat.success){

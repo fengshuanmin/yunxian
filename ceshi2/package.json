@@ -20,7 +20,7 @@
     "superagent": "^3.5.2",
     "superagent-jsonp": "^0.1.1",
     "swig": "^1.4.2",
-    "ws": "^4.0.0"
+    "ws": "^3.3.2"
   },
   "license": "ISC",
   "main": "webpack.config.js",
@@ -28,5 +28,5 @@
     "type": "git",
     "url": "https://git.coding.net/zk201635/yun.git"
   },
-  "description": ""
+  "description": "这是个项目"
 }

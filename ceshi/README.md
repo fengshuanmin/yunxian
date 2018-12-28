@@ -1,35 +1,413 @@
-﻿#yunxian
-
-
-
-##版本: v0.1.17.914
- <p>1:删除所有数据正在加载中</p>
-<p>
-2：天网推修实现地图点选修理厂；</p>
-<p>
-3：车主端二维码登陆支持解码定损员推修的url并支持之前扫码数据；</p>
-<p>
-4：保险公司端推修完成生成二维码，对数据进行16进制转换并添加进二维码中；</p>
-<p>
-5：保险公司端推车详情定损员修改修理厂添加天网推修功能
-</p>
-<p>6：修复了车主端首次扫码停留在登陆页面的问题
-</p>
-<p>7：删除了车主端车辆维修列表的返回按钮，
-</p>
-<p>8：修复了切换页面返回路径错误的问题
-</p>
-
-
-##版本: v0.1.17.828
-<p>更新内容：</p>
-<p>优化车牌号录入自动大写</p>
-<p>优化车辆VIN录入自动大写</p>
-<p>修理厂地图查询开启测试</p>
-
-##版本: v0.1.17.825
-<p>更新内容：</p>
-<p>删除了ios端短信模板，</p>
-<p>添加了推修的loding状态</p>
-<p>更新了jssdk版本到1.2.0</p>
-
+﻿
+├─api
+├─ceshiceshiceshi
+├─common
+│  ├─assembly
+│  ├─baseFun
+│  ├─basePage
+│  ├─css
+│  │  ├─assembly
+│  │  └─basePage
+│  ├─fonts
+│  └─images
+│      └─basePage
+├─config
+├─dist
+│  └─server
+│      ├─img
+│      └─lexiugo
+│          └─page
+│              └─react-owner
+│                  └─dist
+│                      └─img
+├─integral
+│  ├─components
+│  └─public
+│      └─css
+├─laoke
+│  └─css
+├─lexiuApp
+│  └─src
+│      ├─css
+│      ├─img
+│      │  └─newImg
+│      └─js
+│          ├─common
+│          │  └─css
+│          ├─commonComponent
+│          ├─components
+│          │  └─home
+│          └─weixnphoto
+├─loveCar
+│  └─src
+├─loveCarRepair
+│  └─src
+│      ├─css
+│      ├─img
+│      └─js
+│          ├─beifen
+│          │  ├─new
+│          │  └─old
+│          ├─common
+│          ├─components
+│          │  └─home
+│          └─weixin
+├─newBuild
+│  └─src
+│      ├─css
+│      ├─img
+│      └─js
+│          ├─assembly
+│          │  └─css
+│          ├─components
+│          │  ├─home
+│          │  ├─inquiry
+│          │  ├─purchase
+│          │  └─recovery
+│          └─weixin
+├─pc
+│  ├─Accessories
+│  │  ├─components
+│  │  ├─css
+│  │  └─statelessComponent
+│  ├─repairPlant
+│  │  ├─components
+│  │  ├─css
+│  │  ├─images
+│  │  │  └─bxgs
+│  │  └─statelessComponent
+│  ├─selectPart
+│  │  └─css
+│  └─xlcMap
+│      ├─assembly
+│      ├─images
+│      └─selectXlc
+├─repairState
+│  └─src
+│      ├─css
+│      ├─img
+│      └─js
+│          ├─assembly
+│          ├─commonComponent
+│          ├─components
+│          │  └─home
+│          ├─weixin
+│          └─weixnphoto
+├─reportStatistics
+│  ├─js
+│  │  ├─antd-mobile
+│  │  │  ├─accordion
+│  │  │  │  └─style
+│  │  │  ├─action-sheet
+│  │  │  │  └─style
+│  │  │  ├─activity-indicator
+│  │  │  │  └─style
+│  │  │  ├─badge
+│  │  │  │  └─style
+│  │  │  ├─button
+│  │  │  │  └─style
+│  │  │  ├─card
+│  │  │  │  └─style
+│  │  │  ├─carousel
+│  │  │  │  └─style
+│  │  │  ├─checkbox
+│  │  │  │  ├─image
+│  │  │  │  └─style
+│  │  │  ├─date-picker
+│  │  │  │  ├─locale
+│  │  │  │  └─style
+│  │  │  ├─drawer
+│  │  │  │  └─style
+│  │  │  ├─flex
+│  │  │  │  └─style
+│  │  │  ├─grid
+│  │  │  │  └─style
+│  │  │  ├─icon
+│  │  │  │  └─style
+│  │  │  ├─image-picker
+│  │  │  │  └─style
+│  │  │  ├─input-item
+│  │  │  │  └─style
+│  │  │  ├─list
+│  │  │  │  └─style
+│  │  │  ├─list-view
+│  │  │  │  └─style
+│  │  │  ├─menu
+│  │  │  │  └─style
+│  │  │  ├─modal
+│  │  │  │  └─style
+│  │  │  ├─nav-bar
+│  │  │  │  └─style
+│  │  │  ├─notice-bar
+│  │  │  │  └─style
+│  │  │  ├─pagination
+│  │  │  │  └─style
+│  │  │  ├─picker
+│  │  │  │  └─style
+│  │  │  ├─popover
+│  │  │  │  └─style
+│  │  │  ├─popup
+│  │  │  │  └─style
+│  │  │  ├─progress
+│  │  │  │  └─style
+│  │  │  ├─radio
+│  │  │  │  ├─image
+│  │  │  │  └─style
+│  │  │  ├─refresh-control
+│  │  │  │  └─style
+│  │  │  ├─result
+│  │  │  │  └─style
+│  │  │  ├─search-bar
+│  │  │  │  └─style
+│  │  │  ├─segmented-control
+│  │  │  │  └─style
+│  │  │  ├─slider
+│  │  │  │  └─style
+│  │  │  ├─stepper
+│  │  │  │  └─style
+│  │  │  ├─steps
+│  │  │  │  └─style
+│  │  │  ├─style
+│  │  │  │  ├─images
+│  │  │  │  └─themes
+│  │  │  ├─swipe-action
+│  │  │  │  └─style
+│  │  │  ├─switch
+│  │  │  │  └─style
+│  │  │  ├─tab-bar
+│  │  │  │  ├─demo
+│  │  │  │  └─style
+│  │  │  ├─table
+│  │  │  │  └─style
+│  │  │  ├─tabs
+│  │  │  │  └─style
+│  │  │  ├─tag
+│  │  │  │  └─style
+│  │  │  ├─text
+│  │  │  ├─textarea-item
+│  │  │  │  └─style
+│  │  │  ├─toast
+│  │  │  │  ├─images
+│  │  │  │  └─style
+│  │  │  ├─view
+│  │  │  ├─white-space
+│  │  │  │  └─style
+│  │  │  ├─wing-blank
+│  │  │  │  └─style
+│  │  │  └─_util
+│  │  ├─components
+│  │  └─weixin
+│  └─src
+│      ├─css
+│      ├─img
+│      │  └─js
+│      │      ├─antd-mobile
+│      │      │  ├─accordion
+│      │      │  │  └─style
+│      │      │  ├─action-sheet
+│      │      │  │  └─style
+│      │      │  ├─activity-indicator
+│      │      │  │  └─style
+│      │      │  ├─badge
+│      │      │  │  └─style
+│      │      │  ├─button
+│      │      │  │  └─style
+│      │      │  ├─card
+│      │      │  │  └─style
+│      │      │  ├─carousel
+│      │      │  │  └─style
+│      │      │  ├─checkbox
+│      │      │  │  ├─image
+│      │      │  │  └─style
+│      │      │  ├─date-picker
+│      │      │  │  ├─locale
+│      │      │  │  └─style
+│      │      │  ├─drawer
+│      │      │  │  └─style
+│      │      │  ├─flex
+│      │      │  │  └─style
+│      │      │  ├─grid
+│      │      │  │  └─style
+│      │      │  ├─icon
+│      │      │  │  └─style
+│      │      │  ├─image-picker
+│      │      │  │  └─style
+│      │      │  ├─input-item
+│      │      │  │  └─style
+│      │      │  ├─list
+│      │      │  │  └─style
+│      │      │  ├─list-view
+│      │      │  │  └─style
+│      │      │  ├─menu
+│      │      │  │  └─style
+│      │      │  ├─modal
+│      │      │  │  └─style
+│      │      │  ├─nav-bar
+│      │      │  │  └─style
+│      │      │  ├─notice-bar
+│      │      │  │  └─style
+│      │      │  ├─pagination
+│      │      │  │  └─style
+│      │      │  ├─picker
+│      │      │  │  └─style
+│      │      │  ├─popover
+│      │      │  │  └─style
+│      │      │  ├─popup
+│      │      │  │  └─style
+│      │      │  ├─progress
+│      │      │  │  └─style
+│      │      │  ├─radio
+│      │      │  │  ├─image
+│      │      │  │  └─style
+│      │      │  ├─refresh-control
+│      │      │  │  └─style
+│      │      │  ├─result
+│      │      │  │  └─style
+│      │      │  ├─search-bar
+│      │      │  │  └─style
+│      │      │  ├─segmented-control
+│      │      │  │  └─style
+│      │      │  ├─slider
+│      │      │  │  └─style
+│      │      │  ├─stepper
+│      │      │  │  └─style
+│      │      │  ├─steps
+│      │      │  │  └─style
+│      │      │  ├─style
+│      │      │  │  ├─images
+│      │      │  │  └─themes
+│      │      │  ├─swipe-action
+│      │      │  │  └─style
+│      │      │  ├─switch
+│      │      │  │  └─style
+│      │      │  ├─tab-bar
+│      │      │  │  ├─demo
+│      │      │  │  └─style
+│      │      │  ├─table
+│      │      │  │  └─style
+│      │      │  ├─tabs
+│      │      │  │  └─style
+│      │      │  ├─tag
+│      │      │  │  └─style
+│      │      │  ├─text
+│      │      │  ├─textarea-item
+│      │      │  │  └─style
+│      │      │  ├─toast
+│      │      │  │  ├─images
+│      │      │  │  └─style
+│      │      │  ├─view
+│      │      │  ├─white-space
+│      │      │  │  └─style
+│      │      │  ├─wing-blank
+│      │      │  │  └─style
+│      │      │  └─_util
+│      │      ├─components
+│      │      └─weixin
+│      └─js
+│          ├─antd-mobile
+│          │  ├─accordion
+│          │  │  └─style
+│          │  ├─action-sheet
+│          │  │  └─style
+│          │  ├─activity-indicator
+│          │  │  └─style
+│          │  ├─badge
+│          │  │  └─style
+│          │  ├─button
+│          │  │  └─style
+│          │  ├─card
+│          │  │  └─style
+│          │  ├─carousel
+│          │  │  └─style
+│          │  ├─checkbox
+│          │  │  ├─image
+│          │  │  └─style
+│          │  ├─date-picker
+│          │  │  ├─locale
+│          │  │  └─style
+│          │  ├─drawer
+│          │  │  └─style
+│          │  ├─flex
+│          │  │  └─style
+│          │  ├─grid
+│          │  │  └─style
+│          │  ├─icon
+│          │  │  └─style
+│          │  ├─image-picker
+│          │  │  └─style
+│          │  ├─input-item
+│          │  │  └─style
+│          │  ├─list
+│          │  │  └─style
+│          │  ├─list-view
+│          │  │  └─style
+│          │  ├─menu
+│          │  │  └─style
+│          │  ├─modal
+│          │  │  └─style
+│          │  ├─nav-bar
+│          │  │  └─style
+│          │  ├─notice-bar
+│          │  │  └─style
+│          │  ├─pagination
+│          │  │  └─style
+│          │  ├─picker
+│          │  │  └─style
+│          │  ├─popover
+│          │  │  └─style
+│          │  ├─popup
+│          │  │  └─style
+│          │  ├─progress
+│          │  │  └─style
+│          │  ├─radio
+│          │  │  ├─image
+│          │  │  └─style
+│          │  ├─refresh-control
+│          │  │  └─style
+│          │  ├─result
+│          │  │  └─style
+│          │  ├─search-bar
+│          │  │  └─style
+│          │  ├─segmented-control
+│          │  │  └─style
+│          │  ├─slider
+│          │  │  └─style
+│          │  ├─stepper
+│          │  │  └─style
+│          │  ├─steps
+│          │  │  └─style
+│          │  ├─style
+│          │  │  ├─images
+│          │  │  └─themes
+│          │  ├─swipe-action
+│          │  │  └─style
+│          │  ├─switch
+│          │  │  └─style
+│          │  ├─tab-bar
+│          │  │  ├─demo
+│          │  │  └─style
+│          │  ├─table
+│          │  │  └─style
+│          │  ├─tabs
+│          │  │  └─style
+│          │  ├─tag
+│          │  │  └─style
+│          │  ├─text
+│          │  ├─textarea-item
+│          │  │  └─style
+│          │  ├─toast
+│          │  │  ├─images
+│          │  │  └─style
+│          │  ├─view
+│          │  ├─white-space
+│          │  │  └─style
+│          │  ├─wing-blank
+│          │  │  └─style
+│          │  └─_util
+│          ├─components
+│          └─weixin
+├─serverApi
+│  ├─config
+│  ├─forward
+│  └─pc
+└─webpack
