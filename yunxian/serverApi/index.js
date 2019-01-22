@@ -13,6 +13,7 @@ var projjj=true;
 router.use('/pc',require('./pc'));
 router.use('/lexiu-app',require('../api/8280'))
 router.use('/lexiu1-app',require('../api/8180'))
+router.use('/lexiu3-app',require('../api/8380'))
 
 /*ws*/
 var WebSocketServer = require('ws').Server,
