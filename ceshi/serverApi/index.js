@@ -382,6 +382,23 @@ router.get('/downperson',(req,res,next)=>{
     console.log(vUrl1);
     res.end();
 })
+//公里保项目下载二维码
+router.get('/downglb',(req,res,next)=>{
+    var ua = req.headers['user-agent'],vUrl
+    if (/Android/.test(ua)){
+        vUrl='https://www.pgyer.com/JiaF'
+    }else{
+        vUrl='https://itunes.apple.com/us/app/%E5%85%AC%E9%87%8C%E4%BF%9D/id1456560523?l=zh&ls=1&mt=8'
+    }
+    res.write(
+        '<script>' +
+        'window.location.href="'+vUrl+'"'+
+        '</script>'
+    );
+    console.log(vUrl);
+    res.end();
+})
+
 
 /**聊天喽**/
 
