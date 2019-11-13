@@ -352,7 +352,7 @@ router.post('/selectWXImg',(req,res,next)=>{
 })
 
 router.get('/down',(req,res,next)=>{
-    console.log(req)
+    alert(req)
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
 		var ua1 = window.navigator.userAgent.toLowerCase();//获取判断用的对象
