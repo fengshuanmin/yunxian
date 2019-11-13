@@ -352,11 +352,9 @@ router.post('/selectWXImg',(req,res,next)=>{
 })
 
 router.get('/down',(req,res,next)=>{
-    alert(req)
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
-		var ua1 = window.navigator.userAgent.toLowerCase();//获取判断用的对象
-        if (ua1.match(/MicroMessenger/i) == "micromessenger") {
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
             //在微信中打开
             // alert('请复制链接去浏览器中下载')
             window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
