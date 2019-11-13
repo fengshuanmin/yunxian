@@ -353,6 +353,7 @@ router.post('/selectWXImg',(req,res,next)=>{
 
 router.get('/down',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
+    console.log(/Android/.test(ua))
     console.log(ua)
     if (/Android/.test(ua)){
         if (ua.match(/MicroMessenger/i) == "micromessenger") {
