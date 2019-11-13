@@ -360,7 +360,9 @@ router.get('/down',(req,res,next)=>{
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
             res.write(
-                'window.location.href="http://www.toumingxiuche.cn/tmxDocs/image.html"'
+                '<script>' +
+                'window.location.href="http://www.toumingxiuche.cn/tmxDocs/image.html"'+
+                '</script>'
             );
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
