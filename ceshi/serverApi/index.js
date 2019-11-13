@@ -358,21 +358,33 @@ router.get('/down',(req,res,next)=>{
     if (/Android/.test(ua)){
         if (/MicroMessenger/.test(ua)) {
             //在微信中打开
-            window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            res.write(
+                '<script>' +
+                'window.location.href="http://www.toumingxiuche.cn/tmxDocs/image.html"'+
+                '</script>'
+            );
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+            res.write(
+                '<script>' +
+                'window.location.href="'+vUrl+'"'+
+                '</script>'
+            );
+            console.log(vUrl);
+            res.end();
         }
         //vUrl='https://www.pgyer.com/PKVF'
     }else{
         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
+        res.write(
+            '<script>' +
+            'window.location.href="'+vUrl+'"'+
+            '</script>'
+        );
+        console.log(vUrl);
+        res.end();
     }
-    res.write(
-        '<script>' +
-        'window.location.href="'+vUrl+'"'+
-        '</script>'
-    );
-    console.log(vUrl);
-    res.end();
 })
 //个人下载
 router.get('/downperson',(req,res,next)=>{
