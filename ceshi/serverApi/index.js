@@ -359,14 +359,14 @@ router.get('/down',(req,res,next)=>{
         if (/MicroMessenger/.test(ua)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            <script language="javascript">
-                window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            </script>
-            // res.write(
-            //     '<script>' +
-            //     'window.location.href="http://www.toumingxiuche.cn/tmxDocs/image.html"'+
-            //     '</script>'
-            // );
+            {/*<script language="javascript">*/}
+                {/*window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'*/}
+            {/*</script>*/}
+            res.write(
+                '<script>' +
+                'window.location.href="http://www.toumingxiuche.cn/tmxDocs/image.html"'+
+                '</script>'
+            );
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
             res.write(
