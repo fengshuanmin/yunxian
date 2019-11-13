@@ -354,6 +354,7 @@ router.post('/selectWXImg',(req,res,next)=>{
 router.get('/down',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
+        console.log(window)
 		var ua1 = navigator.userAgent.toLowerCase();//获取判断用的对象
         if (ua1.match(/MicroMessenger/i) == "micromessenger") {
             //在微信中打开
