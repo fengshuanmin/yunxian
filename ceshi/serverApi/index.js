@@ -353,10 +353,10 @@ router.post('/selectWXImg',(req,res,next)=>{
 
 router.get('/down',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
+    console.log(ua)
     if (/Android/.test(ua)){
         if (ua.match(/MicroMessenger/i) == "micromessenger") {
             //在微信中打开
-            alert('请复制链接去浏览器中下载')
             window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
