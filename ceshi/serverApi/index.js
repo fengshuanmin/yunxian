@@ -359,7 +359,7 @@ router.get('/down',(req,res,next)=>{
             // alert('请复制链接去浏览器中下载')
             window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
         }else{
-            vUrl='http://116.62.162.134/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+            vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
         }
         //vUrl='https://www.pgyer.com/PKVF'
     }else{
