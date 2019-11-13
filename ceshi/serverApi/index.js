@@ -356,7 +356,7 @@ router.get('/down',(req,res,next)=>{
     console.log(/Android/.test(ua))
     console.log(ua)
     if (/Android/.test(ua)){
-        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        if (/MicroMessenger/.test(ua)) {
             //在微信中打开
             window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
         }else{
