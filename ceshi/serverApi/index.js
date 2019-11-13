@@ -354,7 +354,15 @@ router.post('/selectWXImg',(req,res,next)=>{
 router.get('/down',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
-        vUrl='https://www.pgyer.com/PKVF'
+		var ua1 = navigator.userAgent.toLowerCase();//获取判断用的对象
+        if (ua1.match(/MicroMessenger/i) == "micromessenger") {
+            //在微信中打开
+            // alert('请复制链接去浏览器中下载')
+            window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+        }else{
+            vUrl='http://116.62.162.134/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+        }
+        //vUrl='https://www.pgyer.com/PKVF'
     }else{
         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
