@@ -290,7 +290,14 @@ router.post('/selectWXImg',(req,res,next)=>{
 router.get('/down',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
-        vUrl='https://www.pgyer.com/PKVF'
+        if (/MicroMessenger/.test(ua)) {
+            //在微信中打开
+            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
+        }else{
+            vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+        }
+        //vUrl='https://www.pgyer.com/PKVF'
     }else{
         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
@@ -305,7 +312,14 @@ router.get('/down',(req,res,next)=>{
 router.get('/downperson',(req,res,next)=>{
     var uab = req.headers['user-agent'],vUrl1
     if (/Android/.test(uab)){
-        vUrl1='https://www.pgyer.com/1yCE'
+        if (/MicroMessenger/.test(uab)) {
+            //在微信中打开
+            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/downperson.html'
+        }else{
+            vUrl='http://www.toumingxiuche.cn/app/version/PersonalInquiry_V1.0.6_2019-09-11_release.apk'
+        }
+        // vUrl1='https://www.pgyer.com/1yCE'
     }else{
         vUrl1='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6-%E4%B8%AA%E4%BA%BA%E8%AF%A2%E4%BB%B7/id1435034638?l=zh&ls=1&mt=8'
     }
@@ -317,7 +331,29 @@ router.get('/downperson',(req,res,next)=>{
     console.log(vUrl1);
     res.end();
 })
-
+//公里保项目下载二维码
+router.get('/downglb',(req,res,next)=>{
+    var uac = req.headers['user-agent'],vUrl
+    if (/Android/.test(uac)){
+        if (/MicroMessenger/.test(uac)) {
+            //在微信中打开
+            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/downglb.html'
+        }else{
+            vUrl='http://www.toumingxiuche.cn/app/version/kilometreGuarantee.apk'
+        }
+        // vUrl='https://www.pgyer.com/JiaF'
+    }else{
+        vUrl='https://itunes.apple.com/us/app/%E5%85%AC%E9%87%8C%E4%BF%9D/id1456560523?l=zh&ls=1&mt=8'
+    }
+    res.write(
+        '<script>' +
+        'window.location.href="'+vUrl+'"'+
+        '</script>'
+    );
+    console.log(vUrl);
+    res.end();
+})
 
 /*//!**字体**!//
 var Fontmin = require('fontmin');
