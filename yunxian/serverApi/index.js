@@ -308,13 +308,12 @@ router.post('/selectWXImg',(req,res,next)=>{
 //     console.log(vUrl);
 //     res.end();
 // })
-router.get('/down',(req,res,next)=>{
+router.get('/downcompany',(req,res,next)=>{
     var uab = req.headers['user-agent'],vUrl1
     if (/Android/.test(uab)){
         if (/MicroMessenger/.test(uab)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            console.log('测试')
             vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
         }else{
             vUrl1='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
