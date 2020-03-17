@@ -311,13 +311,14 @@ router.post('/selectWXImg',(req,res,next)=>{
 router.get('/down',(req,res,next)=>{
     var uab = req.headers['user-agent'],vUrl1
     if (/Android/.test(uab)){
-    if (/MicroMessenger/.test(uab)) {
-        //在微信中打开
-        // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-        vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
-    }else{
-        vUrl1='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
-    }
+        if (/MicroMessenger/.test(uab)) {
+            //在微信中打开
+            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            console.log('测试')
+            vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
+        }else{
+            vUrl1='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+        }
     // vUrl1='https://www.pgyer.com/1yCE'
     }else{
         vUrl1='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
