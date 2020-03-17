@@ -292,7 +292,7 @@ router.get('/down',(req,res,next)=>{
         if (/MicroMessenger/.test(ua)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl='http://www.toumingxiuche.cn/tmxDocs/image.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
         }
