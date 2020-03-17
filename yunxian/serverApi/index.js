@@ -286,26 +286,48 @@ router.post('/selectWXImg',(req,res,next)=>{
     }
     sql.Connect(query)
 })
+// router.get('/down',(req,res,next)=>{
+//     var ua = req.headers['user-agent'],vUrl
+//     if (/Android/.test(ua)){
+//         if (/MicroMessenger/.test(ua)) {
+//             //在微信中打开
+//             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+//             vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
+//         }else{
+//             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+//         }
+//         //vUrl='https://www.pgyer.com/PKVF'
+//     }else{
+//         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
+//     }
+//     res.write(
+//         '<script>' +
+//         'window.location.href="'+vUrl+'"'+
+//         '</script>'
+//     );
+//     console.log(vUrl);
+//     res.end();
+// })
 router.get('/down',(req,res,next)=>{
-    var ua = req.headers['user-agent'],vUrl
-    if (/Android/.test(ua)){
-        if (/MicroMessenger/.test(ua)) {
-            //在微信中打开
-            // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
-        }else{
-            vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
-        }
-        //vUrl='https://www.pgyer.com/PKVF'
+    var uab = req.headers['user-agent'],vUrl1
+    if (/Android/.test(uab)){
+    if (/MicroMessenger/.test(uab)) {
+        //在微信中打开
+        // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
+        vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
     }else{
-        vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
+        vUrl1='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+    }
+    // vUrl1='https://www.pgyer.com/1yCE'
+    }else{
+        vUrl1='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
     res.write(
         '<script>' +
-        'window.location.href="'+vUrl+'"'+
+        'window.location.href="'+vUrl1+'"'+
         '</script>'
     );
-    console.log(vUrl);
+    console.log(vUrl1);
     res.end();
 })
 router.get('/downperson',(req,res,next)=>{
@@ -314,7 +336,7 @@ router.get('/downperson',(req,res,next)=>{
         if (/MicroMessenger/.test(uab)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
+            vUrl1='http://www.toumingxiuche.cn/tmxDocs/downperson.html'
         }else{
             vUrl1='http://www.toumingxiuche.cn/app/version/PersonalInquiry_V1.0.6_2019-09-11_release.apk'
         }
