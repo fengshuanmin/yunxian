@@ -320,7 +320,7 @@ router.get('/down',(req,res,next)=>{
     }
     // vUrl1='https://www.pgyer.com/1yCE'
     }else{
-        vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6-%E4%B8%AA%E4%BA%BA%E8%AF%A2%E4%BB%B7/id1435034638?l=zh&ls=1&mt=8'
+        vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
     res.write(
         '<script>' +
