@@ -292,7 +292,7 @@ router.get('/down',(req,res,next)=>{
         if (/MicroMessenger/.test(ua)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl='http://www.toumingxiuche.cn/tmxDocs/downperson.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
         }
@@ -314,7 +314,7 @@ router.get('/downperson',(req,res,next)=>{
         if (/MicroMessenger/.test(uab)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl1='http://www.toumingxiuche.cn/tmxDocs/downperson.html'
+            vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
         }else{
             vUrl1='http://www.toumingxiuche.cn/app/version/PersonalInquiry_V1.0.6_2019-09-11_release.apk'
         }
