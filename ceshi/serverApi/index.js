@@ -351,7 +351,7 @@ router.post('/selectWXImg',(req,res,next)=>{
     sql.Connect(query)
 })
 //保险公司下载
-router.get('/down',(req,res,next)=>{
+router.get('/downcompany',(req,res,next)=>{
     var ua = req.headers['user-agent'],vUrl
     if (/Android/.test(ua)){
         if (/MicroMessenger/.test(ua)) {
@@ -361,7 +361,7 @@ router.get('/down',(req,res,next)=>{
         }else{
             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
         }
-        //vUrl='https://www.pgyer.com/PKVF'
+    // vUrl1='https://www.pgyer.com/1yCE'
     }else{
         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
@@ -398,25 +398,25 @@ router.get('/downperson',(req,res,next)=>{
 })
 //公里保项目下载二维码
 router.get('/downglb',(req,res,next)=>{
-    var uac = req.headers['user-agent'],vUrl
+    var uac = req.headers['user-agent'],vUrl2
     if (/Android/.test(uac)){
         if (/MicroMessenger/.test(uac)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl='http://www.toumingxiuche.cn/tmxDocs/downglb.html'
+            vUrl2='http://www.toumingxiuche.cn/tmxDocs/downglb.html'
         }else{
-            vUrl='http://www.toumingxiuche.cn/app/version/kilometreGuarantee.apk'
+            vUrl2='http://www.toumingxiuche.cn/app/version/kilometreGuarantee.apk'
         }
-        // vUrl='https://www.pgyer.com/JiaF'
+        // vUrl2='https://www.pgyer.com/JiaF'
     }else{
-        vUrl='https://itunes.apple.com/us/app/%E5%85%AC%E9%87%8C%E4%BF%9D/id1456560523?l=zh&ls=1&mt=8'
+        vUrl2='https://itunes.apple.com/us/app/%E5%85%AC%E9%87%8C%E4%BF%9D/id1456560523?l=zh&ls=1&mt=8'
     }
     res.write(
         '<script>' +
-        'window.location.href="'+vUrl+'"'+
+        'window.location.href="'+vUrl2+'"'+
         '</script>'
     );
-    console.log(vUrl);
+    console.log(vUrl2);
     res.end();
 })
 
