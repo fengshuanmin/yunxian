@@ -286,48 +286,27 @@ router.post('/selectWXImg',(req,res,next)=>{
     }
     sql.Connect(query)
 })
-// router.get('/down',(req,res,next)=>{
-//     var ua = req.headers['user-agent'],vUrl
-//     if (/Android/.test(ua)){
-//         if (/MicroMessenger/.test(ua)) {
-//             //在微信中打开
-//             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-//             vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
-//         }else{
-//             vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
-//         }
-//         //vUrl='https://www.pgyer.com/PKVF'
-//     }else{
-//         vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
-//     }
-//     res.write(
-//         '<script>' +
-//         'window.location.href="'+vUrl+'"'+
-//         '</script>'
-//     );
-//     console.log(vUrl);
-//     res.end();
-// })
+//保险公司
 router.get('/downcompany',(req,res,next)=>{
-    var uab = req.headers['user-agent'],vUrl1
-    if (/Android/.test(uab)){
-        if (/MicroMessenger/.test(uab)) {
+    var ua = req.headers['user-agent'],vUrl
+    if (/Android/.test(ua)){
+        if (/MicroMessenger/.test(ua)) {
             //在微信中打开
             // window.location.href='http://www.toumingxiuche.cn/tmxDocs/image.html'
-            vUrl1='http://www.toumingxiuche.cn/tmxDocs/download.html'
+            vUrl='http://www.toumingxiuche.cn/tmxDocs/download.html'
         }else{
-            vUrl1='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
+            vUrl='http://www.toumingxiuche.cn/app/version/app-official-releasetmxc_v1.3.3_officialtmxc_v1.3.3_official.apk'
         }
     // vUrl1='https://www.pgyer.com/1yCE'
     }else{
-        vUrl1='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
+        vUrl='https://itunes.apple.com/us/app/%E9%80%8F%E6%98%8E%E4%BF%AE%E8%BD%A6/id1271183608?l=zh&ls=1&mt=8'
     }
     res.write(
         '<script>' +
-        'window.location.href="'+vUrl1+'"'+
+        'window.location.href="'+vUrl+'"'+
         '</script>'
     );
-    console.log(vUrl1);
+    console.log(vUrl);
     res.end();
 })
 router.get('/downperson',(req,res,next)=>{
